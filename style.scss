@@ -8,6 +8,8 @@ $color-yellow:#fffa65;
 $color-blue:#5ed4f4;
 $color-reactBg:#20232a;
 $color-greatBlue:#250e74;
+$color-lightBlue:#20caff;
+$color:#ff0;
 
 @mixin flexLayout {
     display: flex;
@@ -22,72 +24,92 @@ $color-greatBlue:#250e74;
 body {
     @include flexLayout();
     height: 100vh;
-    perspective: 1000px;
-
-    // background-color: #272727;
+    background-color: #20232a;
 }
 
 a {
-    border: 5px solid $color-greatBlue;
-    // padding: 40px 80px;
-    width: 250px;
-    height: 80px;
+    height: 60px;
+    width: 300px;
+    padding: 40px 80px;
+    font-size: 26px;
     text-decoration: none;
-    font-size: 45px;
-    color: $color-blue;
     position: relative;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    line-height: 80px;
-    overflow: hidden;
+    line-height: 60px;
+    font-weight: bold;
+    letter-spacing: 2px;
     text-align: center;
-    z-index: 1;
+    transition: all .2s;
+    z-index: 10;
+    text-align: center;
+    color: #ff0;
 }
 
 a::before {
     content: '';
-    color: white;
-    font-size: 10px;
-    @include flexLayout();
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
-    bottom: 0;
-    right: 0;
-    border-bottom: 40px solid $color-greatBlue;
-    border-top: 40px solid $color-greatBlue;
-    border-right: 40px solid transparent;
-    transform: translateX(0);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0;
+    box-shadow: -100px 0 0 #ff0;
     transition: all .5s;
     z-index: -1;
-    
-}
-
-a:hover::before {
-    transform: translateX(-100%);
+    opacity: 0;
 }
 
 a::after {
     content: '';
-    color: white;
-    font-size: 10px;
-    @include flexLayout();
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    top: 50%;
     right: 0;
-    border-bottom: 40px solid $color-greatBlue;
-    border-top: 40px solid $color-greatBlue;
-    border-left: 40px solid transparent;
-    transform: translateX(0);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0;
+    box-shadow: 100px 0 0 #ff0;
+    transform: translate(-50%, -50%);
     transition: all .5s;
     z-index: -1;
+    opacity: 0;
+}
+
+a:hover::before {
+    left: 50%;
+    box-shadow: 30px 0 0 #ff0;
+    transform: translate(-50%, -50%);
+    opacity: 1;
 }
 
 a:hover::after {
-    transform: translateX(+100%);
+    right: 50%;
+    box-shadow: -30px 0 0 #ff0;
+    transform: translate(50%, -50%);
+    opacity: 1;
 }
-a:hover{
-    color: $color-greatBlue;
+
+span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ff0;
+    border-radius: 8px;
+    transition: all .3s;
+    transform: scale(0);
+}
+
+a:hover span {
+    transform: scale(1);
+    transition-delay: .4s;
+    z-index: -1;
+}
+
+a:hover {
+    color: #262626;
+    transition-delay: .4s;
 }
